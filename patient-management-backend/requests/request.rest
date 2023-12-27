@@ -1,0 +1,26 @@
+GET http://localhost:3001/api/patients
+
+###
+POST http://localhost:3001/api/user/signup
+Content-Type: application/json
+
+{
+    "email":"def7@email.com",
+    "password":"bus2"
+}
+
+###
+POST http://localhost:3001/api/patient
+Content-Type: application/json
+
+{
+    "full_name":"AKash Sunar",
+    "email":"akash@gmail.com",
+    "contact":9833,
+    "DOB":"1999-07-07",
+    "image":"./images/akash.jpg",
+    "gender":"M"
+}
+
+###
+GET http://localhost:3001/api/patient

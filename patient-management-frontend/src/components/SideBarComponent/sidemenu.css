@@ -1,0 +1,27 @@
+.sideMenu-wrapper {
+  width: 20%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightblue;
+}
+
+.menu-items {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+.overview-wrapper {
+  display: flex;
+}
+
+.menu-items:hover {
+  background-color: aquamarine;
+  /* border-radius: 2rem; */
+}
+
+.menu-items > img {
+  padding: 0.5rem;
+}

@@ -1,0 +1,34 @@
+.table-content {
+  display: flex;
+  /* max-width: 1000px; */
+  width:95%;
+  justify-content: center;
+  margin: auto;
+  border-radius: 0.5rem;
+  /* border: 1px solid black; */
+}
+.info-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.info-content {
+  display: flex;
+  flex-direction: column;
+}
+.name {
+  display: flex;
+  justify-content: flex-start;
+  font-family: "Lucida Sans Regular";
+}
+
+.table-content th {
+  font-family: "Lucida Sans Regular";
+}
+.td-wrapper {
+  background-color: aquamarine;
+}
+.table-content table {
+  width: 100%;
+  text-align: center;
+}

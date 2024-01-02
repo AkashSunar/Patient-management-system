@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt");
 const patientRoute = require("express").Router();
+const jwt = require("jsonwebtoken");
 const Patient = require("../models/patientSchema");
+const User = require("../models/userSchema");
 
 patientRoute.get("/", (request, response) => {
   Patient.find({}).then((result) => {
@@ -8,8 +10,21 @@ patientRoute.get("/", (request, response) => {
   });
 });
 
+const getTokenFrom = (request) => {
+  const authorization = request.get("authorization");
+  if (authorization && authorization.startsWith("Bearer ")) {
+    return authorization.replace("Bearer ", "");
+  }
+  return null;
+};
+
 patientRoute.post("/", async (request, response, next) => {
   const body = request.body;
+  const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET);
+  if (!decodedToken.id) {
+    return response.status(401).json({ error: "invalid token" });
+  }
+  const user = await User.findById(decodedToken.id);
   const newPatient = new Patient({
     ...request.body,
     /*
@@ -26,6 +41,20 @@ patientRoute.post("/", async (request, response, next) => {
     response.status(201).json(savedPatient);
   } catch (e) {
     next(e);
+  }
+});
+
+patientRoute.delete("/:id", async (request, response, next) => {
+  const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET);
+   if (!decodedToken.id) {
+     return response.status(401).json({ error: "invalid token" });
+  }
+  const user = await User.findById(decodedToken.id);
+  try {
+    await Patient.findByIdAndDelete(request.params.id);
+    response.status(204).end();
+  } catch (error) {
+    next(error);
   }
 });
 module.exports = patientRoute;

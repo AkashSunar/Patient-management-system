@@ -4,6 +4,7 @@ const patientSchema = new mongoose.Schema({
   email: { type: String, required: true },
   contact: { type: Number, required: true },
   DOB: { type: String, required: true },
+  Address: { type: String, required: true },
   image: { type: String, required: true },
   gender: { type: String, required: true },
 });

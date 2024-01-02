@@ -1,6 +1,13 @@
-import React from "react";
+
 import "./nav1.css"
 const Nav1 = () => {
+  const handleAddPatient = () => {
+    return (
+      <div>
+        <p>  testing modal </p>
+      </div>
+    )
+  }
   return (
     <div className="navOne">
       <div className="left-content">
@@ -22,7 +29,7 @@ const Nav1 = () => {
                   <input type="text" placeholder="Search" />
               </div>
               <div className="add-patient">
-                  <img src="./images/icons8-add-50.png" alt="" />
+                  <img src="./images/icons8-add-50.png" alt=""  onClick={handleAddPatient}/>
               </div>
               <div className="bell">
                   <img src="./images/icons8-bell-50.png" alt="" />

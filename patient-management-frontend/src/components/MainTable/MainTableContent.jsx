@@ -1,67 +1,46 @@
 import "./maintable.css";
+import { useGetPatientQuery } from "../../redux/api/authApi";
 const MainTableContent = () => {
+  const { data, isLoading, isError, isSuccess } = useGetPatientQuery();
   return (
     <div className="table-content">
       <table>
-        <tr>
-          <th>Basic Info</th>
-          <th>Phone Number</th>
-          <th>Address</th>
-          <th>Gender</th>
-          <th>Admitted Date</th>
-        </tr>
-        <tr className="td-wrapper">
-          <td>
-            <div className="info-wrapper">
-              <div className="patient-image">
-                <img src="./images/icons8-user-50.png" alt="" />
-              </div>
-              <div className="info-content">
-                <div className="name">Akash</div>
-                <div className="email">abc@gmail.com</div>
-              </div>
-            </div>
-          </td>
-          <td>999999</td>
-          <td>ktm</td>
-          <td>F</td>
-          <td>3333</td>
-        </tr>
-
-        <tr className="td-wrapper">
-          <td>
-            <div className="info-wrapper">
-              <div className="patient-image">
-                <img src="./images/icons8-user-50.png" alt="" />
-              </div>
-              <div className="info-content">
-                <div className="name">Akash</div>
-                <div className="email">abc@gmail.com</div>
-              </div>
-            </div>
-          </td>
-          <td>999999</td>
-          <td>ktm</td>
-          <td>F</td>
-          <td>3333</td>
-        </tr>
-        <tr className="td-wrapper">
-          <td>
-            <div className="info-wrapper">
-              <div className="patient-image">
-                <img src="./images/icons8-user-50.png" alt="" />
-              </div>
-              <div className="info-content">
-                <div className="name">Akash</div>
-                <div className="email">abc@gmail.com</div>
-              </div>
-            </div>
-          </td>
-          <td>999999</td>
-          <td>ktm</td>
-          <td>F</td>
-          <td>3333</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Basic Info</th>
+            <th>Phone Number</th>
+            <th>D.O.B</th>
+            <th>Address</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          {isSuccess
+            ? data.map((val, index) => {
+                return (
+                  <>
+                    <tr className="td-wrapper" key={index}>
+                      <td>
+                        <div className="info-wrapper">
+                          <div className="patient-image">
+                            <img src={val.image} alt="" />
+                          </div>
+                          <div className="info-content">
+                            <div className="name">{val.full_name}</div>
+                            <div className="email">{val.email}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{val.contact}</td>
+                      <td>{val.DOB}</td>
+                      <td>{val.Address}</td>
+                      <td>{val.gender}</td>
+                    </tr>
+                  </>
+                );
+              })
+            : null}
+        </tbody>
       </table>
     </div>
   );

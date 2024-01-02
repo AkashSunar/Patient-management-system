@@ -18,6 +18,12 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
+    getPatient: builder.query({
+      query: () => ({
+        url: "patient",
+        method: "GET",
+      }),
+    }),
   }),
 });
-export const { useLoginMutation, useSignupMutation } = authApi;
+export const { useLoginMutation, useSignupMutation,useGetPatientQuery } = authApi;

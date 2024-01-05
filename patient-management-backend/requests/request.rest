@@ -24,9 +24,9 @@ Content-Type: application/json
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpZCI6IjY1OTI4MTk4NjNmMTZhZDA2NDEzYjllMiIsImlhdCI6MTcwNDEyNTgyMH0.HJPK8VBBOSEv4J29wwB0q07qJYSy7oZJp3SrOUiQ_UQ
 
 {
-    "full_name":"Asman Sunar",
-    "email":"Ashman@gmail.com",
-    "contact":98334,
+    "full_name":"robot ",
+    "email":"hem@gmail.com",
+    "contact":983333,
     "DOB":"1999-07-07",
     "Address":"lalitpur",
     "image":"./images/icons8-user-50.png",
@@ -38,5 +38,5 @@ GET http://localhost:3001/api/patient
 
 
 ###
-DELETE http://localhost:3001/api/patient/6592ec5eae2bf32c78e3f523
+DELETE http://localhost:3001/api/patient/6596df4b965bf8a23cf4db15
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpZCI6IjY1OTI4MTk4NjNmMTZhZDA2NDEzYjllMiIsImlhdCI6MTcwNDEyNTgyMH0.HJPK8VBBOSEv4J29wwB0q07qJYSy7oZJp3SrOUiQ_UQ

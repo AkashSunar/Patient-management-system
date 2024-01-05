@@ -24,6 +24,20 @@ export const authApi = createApi({
         method: "GET",
       }),
     }),
+    deletePatient: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `patient/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
   }),
 });
-export const { useLoginMutation, useSignupMutation,useGetPatientQuery } = authApi;
+export const {
+  useLoginMutation,
+  useSignupMutation,
+  useGetPatientQuery,
+  useDeletePatientMutation,
+} = authApi;

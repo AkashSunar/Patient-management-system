@@ -15,4 +15,5 @@ app.use("/api/user", userControllers);
 app.use("/api/patient", patientControllers);
 
 app.use(unknownEndpoint);
+app.use(errorHandler);
 module.exports = app;

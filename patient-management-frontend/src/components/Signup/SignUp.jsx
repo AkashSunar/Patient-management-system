@@ -32,7 +32,7 @@ const SignUp = () => {
   return (
     <div className="main-container wrapper">
       <div className="container-right">
-        <div className="form-title">Please Login To Continue</div>
+        <div className="form-title">Please Signup To Continue</div>
         <form>
           <div className="username-input">
             <input

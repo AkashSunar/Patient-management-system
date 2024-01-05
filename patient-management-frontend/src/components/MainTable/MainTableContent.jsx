@@ -1,7 +1,17 @@
 import "./maintable.css";
-import { useGetPatientQuery } from "../../redux/api/authApi";
+import { useGetPatientQuery,useDeletePatientMutation} from "../../redux/api/authApi";
+import { useState } from "react";
+import DeleteRow from "./DeleteRow";
 const MainTableContent = () => {
   const { data, isLoading, isError, isSuccess } = useGetPatientQuery();
+  // const [] = useDeletePatientMutation();
+
+  const [deleteModal, setDeleteModal] = useState(false)
+  const [deletedId, setDeletedId] = useState('')
+  const handleDeleteModal= (id) => {
+    setDeleteModal(!deleteModal)
+    setDeletedId(id);
+  }
   return (
     <div className="table-content">
       <table>
@@ -35,6 +45,11 @@ const MainTableContent = () => {
                       <td>{val.DOB}</td>
                       <td>{val.Address}</td>
                       <td>{val.gender}</td>
+                      <td>
+                        <div className="edit-icon" >
+                          <img src="./images/icons8-dot-25.png" onClick={() => handleDeleteModal(val.id)} alt="" />
+                        </div>
+                      </td>
                     </tr>
                   </>
                 );
@@ -42,6 +57,7 @@ const MainTableContent = () => {
             : null}
         </tbody>
       </table>
+      {deleteModal ? <DeleteRow id={deletedId} handleDeleteModal={handleDeleteModal} />:null}
     </div>
   );
 };

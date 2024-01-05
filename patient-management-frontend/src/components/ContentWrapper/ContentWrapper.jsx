@@ -11,12 +11,19 @@ const ContentWrapper = () => {
 
       <div className="content-wrapper-right">
         <Nav1 />
-        <hr />
+        <hr/>
         <Nav2 />
         <hr />
         <MainTableContent />
       </div>
     </div>
+
+    // <div className="content-wrapper">
+    //   <SideMenu />
+    //   <Nav1 />
+    //   <Nav2 />
+    //   <MainTableContent />
+    // </div>
   );
 };
 

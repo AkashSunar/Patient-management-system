@@ -1,10 +1,19 @@
 .main-container {
   display: flex;
+  gap: 4rem;
   align-items: center;
   justify-content: center;
   width: 30%;
   height: 100vh;
   background-color:lightblue;
+  /* grid-row: 2/3; */
+}
+.home-page{
+  display: flex;
+
+}
+.background-image{
+  margin: auto;
 }
 
 

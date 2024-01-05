@@ -1,6 +1,5 @@
 .content-wrapper{
     display: flex;
-    flex-direction:row;
   }
   .content-wrapper-right{
     /* display: flex; */

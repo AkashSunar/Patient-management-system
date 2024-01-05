@@ -9,8 +9,6 @@ export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const token = useSelector((state) => state.auth.token);
-
   const [
     login,
     { data: loginData, isLoading: loading, isError, isSuccess: success },
@@ -30,6 +28,7 @@ export default function LoginForm() {
     login(credentials);
     if (success) {
       console.log("login successfully", loginData);
+      localStorage.getItem("token", loginData.token);
       dispatch(
         loginUser({ username: loginData.email, token: loginData.token })
       );
@@ -38,36 +37,42 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="main-container wrapper">
-      {console.log(token, "from use selector")}
-      <div className="container-right">
-        <div className="form-title">Please Login To Continue</div>
-        <form>
-          <div className="username-input">
-            <input
-              type="text"
-              name="email"
-              placeholder="username/email"
-              onChange={handleUsername}
-            />
+    <div className="home-page">
+      <div className="main-container wrapper">
+        {/* {console.log(token, "from use selector")} */}
+
+        <div className="container-right">
+          <div className="form-title">Please Login To Continue</div>
+          <form>
+            <div className="username-input">
+              <input
+                type="text"
+                name="email"
+                placeholder="username/email"
+                onChange={handleUsername}
+              />
+            </div>
+            <div className="username-input">
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                onChange={handlePassword}
+              />
+            </div>
+            <div className="login-btn">
+              <button type="submit" onClick={handleSubmit}>
+                LOGIN
+              </button>
+            </div>
+          </form>
+          <div className="create-account">
+            Don't Have An Account ? <a href="/signup">Sign Up</a>
           </div>
-          <div className="username-input">
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              onChange={handlePassword}
-            />
-          </div>
-          <div className="login-btn">
-            <button type="submit" onClick={handleSubmit}>
-              LOGIN
-            </button>
-          </div>
-        </form>
-        <div className="create-account">
-          Don't Have An Account ? <a href="/signup">Sign Up</a>
         </div>
+      </div>
+      <div className="background-image">
+        <img src="./images/patients.png" alt="" height={500} width={500} />
       </div>
     </div>
   );
